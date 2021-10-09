@@ -3,8 +3,7 @@
 
 ## Practice 1 (Just stuff)
 
-* **task-1** - Creating Structure
-* **task-1-2** - Enums in Structure
+* **task-1** - Structures & Enums
 * **task-2** - Reference/Value types
 * **task-2-2** - Strings & Arrays
 * **task-2-3** - Threads & Exceptions
@@ -38,3 +37,7 @@
 ## Practice 5 (Serizalization)
 
 * **task-1** - Binary & XML Serialization
+
+## Practice 6
+
+[Task text (RUS)](https://docs.google.com/document/d/1VS1SaAxA6RFa_a41Krc73ecfAheDU4Yn/edit?usp=sharing&ouid=110804333392391565342&rtpof=true&sd=true)
