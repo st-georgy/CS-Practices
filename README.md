@@ -41,3 +41,9 @@
 ## Practice 6
 
 [Task text (RUS)](https://docs.google.com/document/d/1VS1SaAxA6RFa_a41Krc73ecfAheDU4Yn/edit?usp=sharing&ouid=110804333392391565342&rtpof=true&sd=true)
+
+## Practice 7
+
+* **task-1** - Simple Multi Threads
+* **task-2** - Mutex
+* **task-3** - ThreadPool
