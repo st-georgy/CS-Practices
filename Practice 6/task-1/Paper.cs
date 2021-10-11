@@ -22,7 +22,7 @@ namespace task_1
         }
 
         /// <summary>
-        /// Person Constructor with basic values
+        /// Paper Constructor with basic values
         /// </summary>
         public Paper() : this("Title", new Person(), DateTime.MinValue) {}
 
@@ -30,6 +30,6 @@ namespace task_1
         /// Overrided virtual ToString() method
         /// </summary>
         /// <returns>String which contains all the class fields</returns>
-        public override string ToString() => $"{papTitle} by {papAuthor} ({papDate})";
+        public override string ToString() => $"{papTitle} ({papDate.ToString("MMMM dd, yyyy")}) by {papAuthor}";
     }
 }

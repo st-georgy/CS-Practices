@@ -1,5 +1,4 @@
-﻿using System;
-using static task_1.Program;
+﻿using System.Collections.Generic;
 
 namespace task_1
 {
@@ -9,13 +8,13 @@ namespace task_1
         private string organization;
         private int regNumber;
         private TimeFrame duration;
-        private Paper[] papers;
+        private List<Paper> papers = new List<Paper>();
 
-        public string ResearchTitle { get; private set; }
-        public string Organization { get; private set; }
-        public int RegNumber { get; private set; }
-        public TimeFrame Duration { get; private set; }
-        public Paper[] Papers { get; private set; }
+        public string ResearchTitle { get => researchTitle; set => researchTitle = value; }
+        public string Organization { get => organization; set => organization = value; }
+        public int RegNumber { get => regNumber; set => regNumber = value; }
+        public TimeFrame Duration { get => duration; set => duration = value; }
+        public IReadOnlyList<Paper> Papers { get => papers.AsReadOnly(); }
 
         /// <summary>
         /// ResearchTeam Constructor to initialize all fields of the class
@@ -25,26 +24,35 @@ namespace task_1
         /// <param name="regNumber">Registration Number</param>
         /// <param name="duration">Research Duration</param>
         /// <param name="papers">List of papers</param>
-        public ResearchTeam(string researchTitle, string organization, int regNumber, TimeFrame duration, Paper[] papers)
+        public ResearchTeam(string researchTitle, string organization, int regNumber, TimeFrame duration)
         {
             this.researchTitle = researchTitle;
             this.organization = organization;
             this.regNumber = regNumber;
             this.duration = duration;
-            this.papers = papers;
         }
+
+        public ResearchTeam() : this("Title", "Organization", 29903, TimeFrame.Long) {}
 
         /// <summary>
         /// Returns Latest paper OR null if list is empty
         /// </summary>
-        public Paper latestPaper => papers.Length > 0 ? papers[papers.Length - 1] : null;
+        public Paper latestPaper => papers.Count > 0 ? papers[papers.Count - 1] : null;
 
+        /// <summary>
+        /// Boolean indexer (only with get)
+        /// </summary>
+        /// <param name="frame">Indexer value</param>
+        /// <returns>Returns true if the value of the field with research duration info
+        /// matches the index value, otherwise returns false</returns>
         public bool this[TimeFrame frame] => duration == frame;
 
-        /*public void AddPapers(params Paper[])
-        {
-            
-        }*/
+        /// <summary>
+        /// Adds range of papers into papers list
+        /// </summary>
+        /// <param name="paps">List of papers to add</param>
+        public void AddPapers(params Paper[] paps) => papers.AddRange(paps);
+
 
         /// <summary>
         /// Overrided virtual ToString() method
@@ -54,11 +62,11 @@ namespace task_1
         {
             string res = $"Title: {researchTitle}\nOrganization: {organization}\nRegistration Number: {regNumber}" +
                 $"\nResearch Duration: {duration}\nResearch papers:";
-            if (papers.Length == 0)
+            if (papers.Count == 0)
                 res += "\nNone";
             else
                 foreach (Paper paper in papers)
-                    res += $"\n{paper}";
+                    res += $"\n{papers.IndexOf(paper) + 1}. {paper}";
             return res;
         }
 
